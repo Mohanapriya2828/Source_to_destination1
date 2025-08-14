@@ -1,3 +1,22 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cstdio> 
+
+using namespace std;
+
+
+bool fileExists(const string &filename) {
+    ifstream file(filename);
+    return file.good();
+}
+
+
+bool fileEmpty(const string &filename) {
+    ifstream file(filename, ios::ate); 
+    return file.tellg() == 0;          
+}
+
 int main() {
     string line;
 
@@ -26,8 +45,9 @@ int main() {
         bFile.close();
         cout << "Created new employee_details_copy.csv" << endl;
     }
-}
-ifstream aFile("employee_details.csv");
+
+    
+    ifstream aFile("employee_details.csv");
     ofstream bFile("employee_details_copy.csv", ios::app);
 
     if (!aFile || !bFile) {
@@ -39,6 +59,7 @@ ifstream aFile("employee_details.csv");
     while (getline(aFile, line)) {
         bFile << line << "\n";
     }
+
     cout << "Data copied from employee_details.csv to employee_details_copy.csv successfully!" << endl;
 
     aFile.close();
