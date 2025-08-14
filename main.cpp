@@ -27,3 +27,15 @@ int main() {
         cout << "Created new employee_details_copy.csv" << endl;
     }
 }
+ifstream aFile("employee_details.csv");
+    ofstream bFile("employee_details_copy.csv", ios::app);
+
+    if (!aFile || !bFile) {
+        cerr << "Error opening files!" << endl;
+        return 1;
+    }
+
+    
+    while (getline(aFile, line)) {
+        bFile << line << "\n";
+    }
