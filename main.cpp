@@ -39,3 +39,10 @@ ifstream aFile("employee_details.csv");
     while (getline(aFile, line)) {
         bFile << line << "\n";
     }
+    cout << "Data copied from employee_details.csv to employee_details_copy.csv successfully!" << endl;
+
+    aFile.close();
+    bFile.close();
+
+    return 0;
+}
